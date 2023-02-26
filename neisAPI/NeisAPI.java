@@ -64,15 +64,12 @@ public class NeisAPI {
         return this.url;
     }
 
-    /** call Neis API with URL in class */
-    public void callAPI() throws IOException{
+    /** call Neis API */
+    public String callAPI() throws IOException{
         this.conn = (HttpURLConnection) this.url.openConnection();
         this.conn.setRequestMethod("GET");
-        this.conn.setRequestProperty("Content-type", "application/json");
-    }
+        this.conn.setRequestProperty("Content-type", "application/json; charset=utf-8");
 
-    /** get data from Neis API */
-    public String getData() throws IOException{
         BufferedReader rd;
 
         if(this.conn.getResponseCode() >= 200 && this.conn.getResponseCode() <= 300) {
