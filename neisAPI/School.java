@@ -17,7 +17,11 @@ public class School {
     private String pSize;
 
     private String LCCODE;
+    private String SCCODE;
     private String SCNAME;
+    private String SCKNAME;
+    private String LCTN;
+    private String FOND;
 
     //HttpURLConnection conn;
 
@@ -35,9 +39,9 @@ public class School {
 
     }
     /** make URL directly */
-    public School(String Key, String LCCODE, String SCNAME, String Type, String pIndex, String pSize) {
+    public School(String KEY, String Type, String pIndex, String pSize, String LCCODE, String SCCODE, String SCNAME, String SCKNAME, String LCTN, String FOND) {
         try {
-            URL url = makeURL();
+            URL url = makeURL(KEY,  Type,  pIndex,  pSize,  LCCODE,  SCCODE,  SCNAME,  SCKNAME,  LCTN,  FOND);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,25 +51,37 @@ public class School {
     private URL makeURL() throws IOException {
         /*URL*/
         String tmpUrl = "https://open.neis.go.kr/hub/schoolInfo";
-        tmpUrl += "?" + URLEncoder.encode("ATPT_OFCDC_SC_CODE", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.LCCODE, StandardCharsets.UTF_8);
-        tmpUrl += "&" + URLEncoder.encode("SCHUL_NM", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.SCNAME, StandardCharsets.UTF_8);
+        tmpUrl += "?" + URLEncoder.encode("KEY", StandardCharsets.UTF_8) + "=" + this.KEY;
         tmpUrl += "&" + URLEncoder.encode("Type", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.Type, StandardCharsets.UTF_8);
         tmpUrl += "&" + URLEncoder.encode("pIndex", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.pIndex, StandardCharsets.UTF_8);
         tmpUrl += "&" + URLEncoder.encode("pSize", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.pSize, StandardCharsets.UTF_8);
-        tmpUrl += "&" + URLEncoder.encode("KEY", StandardCharsets.UTF_8) + "=" + this.KEY;
+
+        tmpUrl += "&" + URLEncoder.encode("ATPT_OFCDC_SC_CODE", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.LCCODE, StandardCharsets.UTF_8);
+        tmpUrl += "&" + URLEncoder.encode("SCHUL_CODE", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.SCCODE, StandardCharsets.UTF_8);
+        tmpUrl += "&" + URLEncoder.encode("SCHUL_NM", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.SCNAME, StandardCharsets.UTF_8);
+        tmpUrl += "&" + URLEncoder.encode("SCHUL_KND_SC_NM", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.SCKNAME, StandardCharsets.UTF_8);
+        tmpUrl += "&" + URLEncoder.encode("LCTN_SC_NM", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.LCTN, StandardCharsets.UTF_8);
+        tmpUrl += "&" + URLEncoder.encode("FOND_SC_NM", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(this.FOND, StandardCharsets.UTF_8);
 
         return new URL(tmpUrl);
     }
 
     /** make URL with arguments */
-    public URL makeURL(String KEY, String LCCODE, String SCNAME, String Type, String pIndex, String pSize) throws IOException{
+    public URL makeURL(String KEY, String Type, String pIndex, String pSize, String LCCODE, String SCCODE, String SCNAME, String SCKNAME, String LCTN, String FOND) throws IOException{
         this.KEY = KEY;
-        this.LCCODE = LCCODE;
-        this.SCNAME = SCNAME;
         this.Type = Type;
         this.pIndex = pIndex;
         this.pSize = pSize;
+
+        this.LCCODE = LCCODE;
+        this.SCCODE = SCCODE;
+        this.SCNAME = SCNAME;
+        this.SCKNAME = SCKNAME;
+        this.LCTN = LCTN;
+        this.FOND = FOND;
+
         this.url = makeURL();
+
         return this.url;
     }
 
