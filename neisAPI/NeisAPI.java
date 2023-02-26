@@ -1,7 +1,5 @@
 package com.fermion08.lunch.neisAPI;
 
-import android.annotation.SuppressLint;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
