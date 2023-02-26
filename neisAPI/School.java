@@ -1,4 +1,4 @@
-package com.fermion08.lunch.neisAPI;
+package com.fermion08.neisAPI;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,8 +19,8 @@ public class School {
     private String LCCODE;
     private String SCNAME;
 
+    //HttpURLConnection conn;
 
-    private HttpURLConnection conn;
 
     /*
     * String key = "5f9fc2df0be443d1a69a0c421e49e846";
@@ -71,16 +71,17 @@ public class School {
 
     /** call Neis API */
     public String callAPI() throws IOException{
-        this.conn = (HttpURLConnection) this.url.openConnection();
-        this.conn.setRequestMethod("GET");
-        this.conn.setRequestProperty("Content-type", "application/json; charset=utf-8");
+        HttpURLConnection conn;
+        conn = (HttpURLConnection) this.url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json; charset=utf-8");
 
         BufferedReader rd;
 
-        if(this.conn.getResponseCode() >= 200 && this.conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(this.conn.getInputStream()));
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         } else {
-            rd = new BufferedReader(new InputStreamReader(this.conn.getErrorStream()));
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
         }
 
         StringBuilder sb = new StringBuilder();
@@ -90,8 +91,8 @@ public class School {
         }
         rd.close();
 
-        this.conn.disconnect();
-        System.out.println(sb.toString());
+        conn.disconnect();
+        System.out.println(sb);
         return sb.toString();
     }
 }

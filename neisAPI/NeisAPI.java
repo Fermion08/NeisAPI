@@ -1,4 +1,4 @@
-package com.fermion08.lunch.neisAPI;
+package com.fermion08.neisAPI;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,27 +28,12 @@ public class NeisAPI {
         }
     }*/
 
-    public class School {
-        protected URL url;
-    }
-    public class Lunch {
-        protected URL url;
-    }
-
-    public class Academy {
-        protected URL url;
-    }
-
-    public class ESchedule {
-        protected URL url;
-    }
-    public class MSchedule {
-        protected URL url;
-    }
-
-    public class HSchedule {
-        protected URL url;
-    }
+    public class School {}
+    public class Lunch {}
+    public class Academy {}
+    public class ESchedule {}
+    public class MSchedule {}
+    public class HSchedule {}
 
     private URL url;
 
@@ -56,7 +41,7 @@ public class NeisAPI {
     private String SCNAME;
 
 
-    private HttpURLConnection conn;
+    //private HttpURLConnection conn;
 
     /*
     * String key = "5f9fc2df0be443d1a69a0c421e49e846";
