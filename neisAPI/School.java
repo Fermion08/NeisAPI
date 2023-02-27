@@ -47,6 +47,46 @@ public class School {
         }
     }
 
+
+    public void setDefaultParam(String KEY, String Type, String pIndex, String pSize) {
+        this.KEY = KEY;
+        this.Type = Type;
+        this.pIndex = pIndex;
+        this.pSize = pSize;
+    }
+
+    public String[] getDefaultParam() {
+        String[] str = new String[4];
+        str[0] = this.KEY;
+        str[1] = this.Type;
+        str[2] = this.pIndex;
+        str[3] = this.pSize;
+
+        return str;
+    }
+
+    public void setOptionalParam(String LCCODE, String SCCODE, String SCNAME, String SCKNAME, String LCTN, String FOND) {
+        this.LCCODE = LCCODE;
+        this.SCCODE = SCCODE;
+        this.SCNAME = SCNAME;
+        this.SCKNAME = SCKNAME;
+        this.LCTN = LCTN;
+        this.FOND = FOND;
+    }
+
+    public String[] getOptionalParam() {
+        String[] str = new String[6];
+        str[0] = this.LCCODE;
+        str[1] = this.SCCODE;
+        str[2] = this.SCNAME;
+        str[3] = this.SCKNAME;
+        str[4] = this.LCTN;
+        str[5] = this.FOND;
+
+        return str;
+    }
+
+
     /** make URL with variable in class */
     private URL makeURL() throws IOException {
         /*URL*/
