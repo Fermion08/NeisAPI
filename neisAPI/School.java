@@ -88,7 +88,7 @@ public class School {
 
 
     /** make URL with variable in class */
-    private URL makeURL() throws IOException {
+    public URL makeURL() throws IOException {
         /*URL*/
         String tmpUrl = "https://open.neis.go.kr/hub/schoolInfo";
         tmpUrl += "?" + URLEncoder.encode("KEY", StandardCharsets.UTF_8) + "=" + this.KEY;
