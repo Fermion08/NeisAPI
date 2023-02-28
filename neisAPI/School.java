@@ -148,7 +148,7 @@ public class School {
         rd.close();
 
         conn.disconnect();
-        System.out.println(sb);
+        //System.out.println(sb);
         return sb.toString();
     }
 }
